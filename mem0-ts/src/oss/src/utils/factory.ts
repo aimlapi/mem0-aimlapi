@@ -35,6 +35,8 @@ import { LMStudioLLM } from "../llms/lmstudio";
 import { DeepSeekLLM } from "../llms/deepseek";
 import { XAILLM } from "../llms/xai";
 import { SarvamLLM } from "../llms/sarvam";
+import { AimlapiLLM } from "../llms/aimlapi";
+import { AimlapiEmbedder } from "../embeddings/aimlapi";
 import { AWSBedrockLLM } from "../llms/aws_bedrock";
 import { LiteLLM } from "../llms/litellm";
 import { MiniMaxLLM } from "../llms/minimax";
@@ -99,6 +101,8 @@ export class EmbedderFactory {
         return new VertexAIEmbedder(config);
       case "huggingface":
         return new HuggingFaceEmbedder(config);
+      case "aimlapi":
+        return new AimlapiEmbedder(config);
       default:
         throw new Error(`Unsupported embedder provider: ${provider}`);
     }
@@ -145,6 +149,8 @@ export class LLMFactory {
         return new TogetherLLM(config);
       case "vllm":
         return new VllmLLM(config);
+      case "aimlapi":
+        return new AimlapiLLM(config);
       default:
         throw new Error(`Unsupported LLM provider: ${provider}`);
     }

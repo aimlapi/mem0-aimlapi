@@ -273,7 +273,7 @@ config = MemoryConfig(
 
 ### Supported Providers
 
-#### LLM Providers (20 supported)
+#### LLM Providers (21 supported)
 - **openai** - OpenAI GPT models (default)
 - **anthropic** - Claude models
 - **gemini** - Google Gemini
@@ -292,8 +292,9 @@ config = MemoryConfig(
 - **langchain** - LangChain integration
 - **openai_structured** - OpenAI with structured output
 - **azure_openai_structured** - Azure OpenAI with structured output
+- **aimlapi** - aimlapi.com gateway (350+ models)
 
-#### Embedding Providers (10 supported)
+#### Embedding Providers (11 supported)
 - **openai** - OpenAI embeddings (default)
 - **ollama** - Ollama embeddings
 - **huggingface** - HuggingFace models
@@ -304,6 +305,7 @@ config = MemoryConfig(
 - **lmstudio** - LM Studio embeddings
 - **langchain** - LangChain embeddings
 - **aws_bedrock** - AWS Bedrock embeddings
+- **aimlapi** - aimlapi.com embeddings
 
 #### Vector Store Providers (19 supported)
 - **qdrant** - Qdrant vector database (default)
@@ -434,6 +436,7 @@ config = MemoryConfig(
 - **XAI** - xAI models
 - **LiteLLM** - Unified LLM interface
 - **LangChain** - LangChain LLM integration
+- **aimlapi.com** - OpenAI-compatible gateway to 350+ models
 
 #### Vector Store Providers
 - **Chroma** - AI-native open-source vector database

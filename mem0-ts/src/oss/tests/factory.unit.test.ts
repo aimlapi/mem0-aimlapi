@@ -117,6 +117,16 @@ jest.mock("../src/llms/sarvam", () => ({
     .fn()
     .mockImplementation((config) => ({ type: "sarvam-llm", config })),
 }));
+jest.mock("../src/llms/aimlapi", () => ({
+  AimlapiLLM: jest
+    .fn()
+    .mockImplementation((config) => ({ type: "aimlapi-llm", config })),
+}));
+jest.mock("../src/embeddings/aimlapi", () => ({
+  AimlapiEmbedder: jest
+    .fn()
+    .mockImplementation((config) => ({ type: "aimlapi-embedder", config })),
+}));
 jest.mock("../src/llms/litellm", () => ({
   LiteLLM: jest
     .fn()
@@ -259,6 +269,7 @@ describe("EmbedderFactory", () => {
     ["lmstudio"],
     ["vertexai"],
     ["together"],
+    ["aimlapi"],
   ])("creates embedder for provider '%s'", (provider) => {
     expect(() =>
       EmbedderFactory.create(provider, dummyEmbedConfig),
@@ -306,6 +317,7 @@ describe("LLMFactory", () => {
     ["minimax"],
     ["together"],
     ["vllm"],
+    ["aimlapi"],
   ])("creates LLM for provider '%s'", (provider) => {
     expect(() => LLMFactory.create(provider, dummyLLMConfig)).not.toThrow();
   });

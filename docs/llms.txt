@@ -467,6 +467,7 @@ Everything below is OSS-only provider configuration. Skip this entire section wh
 - [LiteLLM](https://docs.mem0.ai/components/llms/models/litellm) [OSS]: Use when multiplexing many providers behind LiteLLM.
 - [vLLM](https://docs.mem0.ai/components/llms/models/vllm) [OSS]: Use when self-hosting inference with vLLM.
 - [LangChain LLM](https://docs.mem0.ai/components/llms/models/langchain) [OSS]: Use when the LLM is wrapped behind a LangChain adapter.
+- [aimlapi.com](https://docs.mem0.ai/components/llms/models/aimlapi) [OSS]: Use when the LLM is reached through the aimlapi.com gateway.
 
 ### Embedding Providers [OSS]
 - [Embeddings Overview](https://docs.mem0.ai/components/embedders/overview) [OSS]: Use when choosing an embedding model.
@@ -482,6 +483,7 @@ Everything below is OSS-only provider configuration. Skip this entire section wh
 - [Together Embeddings](https://docs.mem0.ai/components/embedders/models/together) [OSS]: Use when embeddings run on Together.
 - [LangChain Embeddings](https://docs.mem0.ai/components/embedders/models/langchain) [OSS]: Use when embeddings are wrapped behind a LangChain adapter.
 - [FastEmbed](https://docs.mem0.ai/components/embedders/models/fastembed) [OSS]: Use when embeddings run locally via FastEmbed (ONNX).
+- [aimlapi.com Embeddings](https://docs.mem0.ai/components/embedders/models/aimlapi) [OSS]: Use when embeddings are reached through the aimlapi.com gateway.
 
 ### Vector Databases [OSS]
 - [Vector Database Overview](https://docs.mem0.ai/components/vectordbs/overview) [OSS]: Use when choosing a vector store.

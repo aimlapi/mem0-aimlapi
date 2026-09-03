@@ -1,0 +1,103 @@
+---
+title: aimlapi.com
+description: "Configure aimlapi.com as an LLM provider in Mem0, an OpenAI-compatible gateway to 350+ chat models from OpenAI, Anthropic, Google, DeepSeek and others."
+---
+
+[aimlapi.com](https://aimlapi.com) exposes 350+ chat models behind a single OpenAI-compatible endpoint, so one key and one base URL reach OpenAI, Anthropic, Google, DeepSeek, Alibaba and others. Mem0 can use it for the LLM, the [embedder](/components/embedders/models/aimlapi), or both.
+
+Set the `AIMLAPI_API_KEY` environment variable with a key from the [aimlapi.com dashboard](https://aimlapi.com/app/keys).
+
+Model ids are namespaced, for example `openai/gpt-5-mini`, `anthropic/claude-sonnet-4.6` or `google/gemini-2.5-flash`. The live catalog is at `https://api.aimlapi.com/v1/models`.
+
+## Usage
+
+<CodeGroup>
+```python Python
+import os
+from mem0 import Memory
+
+os.environ["AIMLAPI_API_KEY"] = "your-api-key"
+
+config = {
+    "llm": {
+        "provider": "aimlapi",
+        "config": {
+            "model": "openai/gpt-5-mini",
+            "temperature": 0.1,
+        }
+    },
+    "embedder": {
+        "provider": "aimlapi",
+        "config": {
+            "model": "openai/text-embedding-3-small"
+        }
+    }
+}
+
+m = Memory.from_config(config)
+messages = [
+    {"role": "user", "content": "I'm planning to watch a movie tonight. Any recommendations?"},
+    {"role": "assistant", "content": "How about thriller movies? They can be quite engaging."},
+    {"role": "user", "content": "I'm not a big fan of thriller movies but I love sci-fi movies."},
+    {"role": "assistant", "content": "Got it! I'll avoid thriller recommendations and suggest sci-fi movies in the future."}
+]
+m.add(messages, user_id="alex")
+```
+
+```typescript TypeScript
+import { Memory } from 'mem0ai/oss';
+
+const config = {
+  llm: {
+    provider: 'aimlapi',
+    config: {
+      apiKey: process.env.AIMLAPI_API_KEY || '',
+      model: 'openai/gpt-5-mini',
+      temperature: 0.1,
+    },
+  },
+  embedder: {
+    provider: 'aimlapi',
+    config: {
+      apiKey: process.env.AIMLAPI_API_KEY || '',
+      model: 'openai/text-embedding-3-small',
+      embeddingDims: 1536,
+    },
+  },
+};
+
+const memory = new Memory(config);
+const messages = [
+    {"role": "user", "content": "I'm planning to watch a movie tonight. Any recommendations?"},
+    {"role": "assistant", "content": "How about thriller movies? They can be quite engaging."},
+    {"role": "user", "content": "I'm not a big fan of thriller movies but I love sci-fi movies."},
+    {"role": "assistant", "content": "Got it! I'll avoid thriller recommendations and suggest sci-fi movies in the future."}
+];
+await memory.add(messages, { userId: 'alex' });
+```
+
+</CodeGroup>
+
+## Pointing at a different endpoint
+
+`aimlapi_base_url` (Python) or `baseURL` (TypeScript) overrides the endpoint, and `AIMLAPI_API_BASE` does the same from the environment. Mem0's attribution headers are only attached when the resolved host is `api.aimlapi.com`, so they are not forwarded to a gateway of your own.
+
+```python
+config = {
+    "llm": {
+        "provider": "aimlapi",
+        "config": {
+            "model": "anthropic/claude-sonnet-4.6",
+            "aimlapi_base_url": "https://my-gateway.internal/v1",
+        }
+    }
+}
+```
+
+<Note>
+`max_tokens` does not bound reasoning tokens on every model behind the gateway, and `completion_tokens` in the usage block excludes reasoning tokens on some of them. Treat it as a length hint, not a cost ceiling.
+</Note>
+
+## Config
+
+All available parameters for the `aimlapi` config are present in [Master List of All Params in Config](../config).
