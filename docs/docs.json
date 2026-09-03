@@ -171,6 +171,7 @@
                             "group": "Supported LLMs",
                             "icon": "list",
                             "pages": [
+                              "components/llms/models/aimlapi",
                               "components/llms/models/openai",
                               "components/llms/models/anthropic",
                               "components/llms/models/azure-openai",
@@ -187,8 +188,7 @@
                               "components/llms/models/sarvam",
                               "components/llms/models/lmstudio",
                               "components/llms/models/langchain",
-                              "components/llms/models/vllm",
-                              "components/llms/models/aimlapi"
+                              "components/llms/models/vllm"
                             ]
                           }
                         ]
@@ -244,6 +244,7 @@
                             "group": "Supported Embedding Models",
                             "icon": "list",
                             "pages": [
+                              "components/embedders/models/aimlapi",
                               "components/embedders/models/openai",
                               "components/embedders/models/azure-openai",
                               "components/embedders/models/ollama",
@@ -254,8 +255,7 @@
                               "components/embedders/models/together",
                               "components/embedders/models/langchain",
                               "components/embedders/models/aws-bedrock",
-                              "components/embedders/models/fastembed",
-                              "components/embedders/models/aimlapi"
+                              "components/embedders/models/fastembed"
                             ]
                           }
                         ]
