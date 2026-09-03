@@ -22,7 +22,7 @@ export const AIMLAPI_ATTRIBUTION_HOST = "api.aimlapi.com";
 const ATTRIBUTION_HEADERS: Record<string, string> = {
   "HTTP-Referer": "https://github.com/mem0ai/mem0",
   "X-Title": "Mem0",
-  "X-AIMLAPI-Partner-ID": "part_mem0",
+  "X-AIMLAPI-Partner-ID": "part_JNAROikm3sdRqpewzcZxLgrK",
   "X-AIMLAPI-Source": "agent/mem0",
 };
 

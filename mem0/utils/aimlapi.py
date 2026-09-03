@@ -21,7 +21,7 @@ ATTRIBUTION_HOST = "api.aimlapi.com"
 _ATTRIBUTION_HEADERS = {
     "HTTP-Referer": "https://github.com/mem0ai/mem0",
     "X-Title": "Mem0",
-    "X-AIMLAPI-Partner-ID": "part_mem0",
+    "X-AIMLAPI-Partner-ID": "part_JNAROikm3sdRqpewzcZxLgrK",
     "X-AIMLAPI-Source": "agent/mem0",
 }
 
