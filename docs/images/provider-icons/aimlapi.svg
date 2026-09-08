@@ -1,0 +1,10 @@
+<svg width="448" height="448" viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg">
+<style>
+        path, use { fill: #101010; }
+        @media (prefers-color-scheme: dark) {
+            path, use { fill: #FFFFFF; }
+        }
+    </style>
+<path id="aimlapi-half" d="M25 25 L248 129 L248 224 Q248 240 233 233 L162 200 Q152 195 152 206 L152 290 L25 348 Z"/>
+<use href="#aimlapi-half" transform="rotate(180 224 224)"/>
+</svg>

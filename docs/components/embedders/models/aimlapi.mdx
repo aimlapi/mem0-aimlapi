@@ -1,0 +1,91 @@
+---
+title: aimlapi.com
+description: "Configure aimlapi.com as an embedding provider in Mem0, with OpenAI, Voyage, Google and Alibaba embedding models behind one OpenAI-compatible endpoint."
+---
+
+[aimlapi.com](https://aimlapi.com) serves embedding models from several vendors over the OpenAI-compatible `/v1/embeddings` route. Set the `AIMLAPI_API_KEY` environment variable with a key from the [aimlapi.com dashboard](https://aimlapi.com/app/keys).
+
+Model ids are namespaced, for example `openai/text-embedding-3-small` (1536 dims) or `openai/text-embedding-3-large` (3072 dims). The live catalog is at `https://api.aimlapi.com/v1/models`.
+
+### Usage
+
+<Note> The `embedding_model_dims` parameter for `vector_store` must match the model you pick — `1536` for `openai/text-embedding-3-small`, `3072` for `openai/text-embedding-3-large`. </Note>
+
+<CodeGroup>
+```python Python
+import os
+from mem0 import Memory
+
+os.environ["AIMLAPI_API_KEY"] = "your-api-key"
+
+config = {
+    "llm": {
+        "provider": "aimlapi",
+        "config": {
+            "model": "openai/gpt-5-mini"
+        }
+    },
+    "embedder": {
+        "provider": "aimlapi",
+        "config": {
+            "model": "openai/text-embedding-3-small"
+        }
+    }
+}
+
+m = Memory.from_config(config)
+messages = [
+    {"role": "user", "content": "I'm planning to watch a movie tonight. Any recommendations?"},
+    {"role": "assistant", "content": "How about thriller movies? They can be quite engaging."},
+    {"role": "user", "content": "I'm not a big fan of thriller movies but I love sci-fi movies."},
+    {"role": "assistant", "content": "Got it! I'll avoid thriller recommendations and suggest sci-fi movies in the future."}
+]
+m.add(messages, user_id="john")
+```
+
+```typescript TypeScript
+import { Memory } from 'mem0ai/oss';
+
+const config = {
+  embedder: {
+    provider: 'aimlapi',
+    config: {
+      apiKey: process.env.AIMLAPI_API_KEY || '',
+      model: 'openai/text-embedding-3-small',
+      embeddingDims: 1536,
+    },
+  },
+};
+
+const memory = new Memory(config);
+await memory.add("I'm visiting Paris", { userId: "john" });
+```
+
+</CodeGroup>
+
+<Note>
+The endpoint accepts a string or a list of strings as `input` and rejects the pre-tokenised integer-array form with a 400. If you route aimlapi.com through the `langchain` embedder instead of this one, configure the LangChain embedding class to send text rather than token ids.
+</Note>
+
+### Config
+
+Here are the parameters available for configuring the aimlapi.com embedder:
+
+<Tabs>
+<Tab title="Python">
+| Parameter | Description | Default Value |
+| --- | --- | --- |
+| `model` | The name of the embedding model to use | `openai/text-embedding-3-small` |
+| `embedding_dims` | Dimensions of the embedding model; sent as `dimensions` only when set | `1536` |
+| `api_key` | The aimlapi.com API key | `AIMLAPI_API_KEY` |
+| `aimlapi_base_url` | Base URL for the API | `https://api.aimlapi.com/v1` |
+</Tab>
+<Tab title="TypeScript">
+| Parameter | Description | Default Value |
+| --- | --- | --- |
+| `model` | The name of the embedding model to use | `openai/text-embedding-3-small` |
+| `embeddingDims` | Dimensions of the embedding model for vector store configuration | `1536` |
+| `apiKey` | The aimlapi.com API key | `AIMLAPI_API_KEY` |
+| `baseURL` | Base URL for the API | `https://api.aimlapi.com/v1` |
+</Tab>
+</Tabs>

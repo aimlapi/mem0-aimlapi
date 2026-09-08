@@ -17,6 +17,8 @@ export interface EmbeddingConfig {
   model?: string | any;
   baseURL?: string;
   url?: string;
+  // Extra headers sent on every request by OpenAI-compatible embedders.
+  defaultHeaders?: Record<string, string>;
   embeddingDims?: number;
   modelProperties?: Record<string, any>;
   // HuggingFace TEI / OpenAI-compatible inference endpoint base URL.
@@ -61,6 +63,8 @@ export interface HistoryStoreConfig {
 export interface LLMConfig {
   provider?: string;
   baseURL?: string;
+  // Extra headers sent on every request by OpenAI-compatible providers.
+  defaultHeaders?: Record<string, string>;
   vllmBaseURL?: string;
   vllm_base_url?: string;
   url?: string;

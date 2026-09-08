@@ -450,6 +450,7 @@ Everything below is OSS-only provider configuration. Skip this entire section wh
 ### LLM Providers [OSS]
 - [LLM Overview](https://docs.mem0.ai/components/llms/overview) [OSS]: Use when the user is choosing an LLM for memory extraction.
 - [LLM Configuration](https://docs.mem0.ai/components/llms/config) [OSS]: Use for the `llm` config schema.
+- [aimlapi.com](https://docs.mem0.ai/components/llms/models/aimlapi) [OSS]: Use when the LLM is reached through the aimlapi.com gateway.
 - [OpenAI](https://docs.mem0.ai/components/llms/models/openai) [OSS]: Use when the extraction LLM is OpenAI.
 - [Anthropic](https://docs.mem0.ai/components/llms/models/anthropic) [OSS]: Use when the extraction LLM is Claude.
 - [Azure OpenAI](https://docs.mem0.ai/components/llms/models/azure-openai) [OSS]: Use when the user is on Azure-hosted OpenAI.
@@ -471,6 +472,7 @@ Everything below is OSS-only provider configuration. Skip this entire section wh
 ### Embedding Providers [OSS]
 - [Embeddings Overview](https://docs.mem0.ai/components/embedders/overview) [OSS]: Use when choosing an embedding model.
 - [Embeddings Configuration](https://docs.mem0.ai/components/embedders/config) [OSS]: Use for the `embedder` config schema.
+- [aimlapi.com Embeddings](https://docs.mem0.ai/components/embedders/models/aimlapi) [OSS]: Use when embeddings are reached through the aimlapi.com gateway.
 - [OpenAI Embeddings](https://docs.mem0.ai/components/embedders/models/openai) [OSS]: Use when embeddings come from OpenAI.
 - [Azure OpenAI Embeddings](https://docs.mem0.ai/components/embedders/models/azure-openai) [OSS]: Use for Azure-hosted OpenAI embeddings.
 - [AWS Bedrock Embeddings](https://docs.mem0.ai/components/embedders/models/aws-bedrock) [OSS]: Use for Bedrock-hosted embeddings.
