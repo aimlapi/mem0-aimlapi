@@ -375,6 +375,7 @@
                       "integrations/claude-ai",
                       "integrations/cursor",
                       "integrations/codex",
+                      "integrations/kimi",
                       "integrations/opencode",
                       "integrations/antigravity"
                     ]
